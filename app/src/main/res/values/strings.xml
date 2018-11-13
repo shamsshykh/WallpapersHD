@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WBWP</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_profile">Profile</string>
+</resources>
