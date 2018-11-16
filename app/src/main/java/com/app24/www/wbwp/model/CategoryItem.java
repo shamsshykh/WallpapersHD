@@ -1,8 +1,13 @@
 package com.app24.www.wbwp.model;
 
-public class Categorymodel {
+public class CategoryItem {
     private String name;
     private int img;
+
+    public CategoryItem(String name, int img){
+        this.name=name;
+        this.img=img;
+    }
 
     public String getName() {
         return name;

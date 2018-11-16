@@ -4,7 +4,7 @@ package com.app24.www.wbwp.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.app24.www.wbwp.R;
 import com.app24.www.wbwp.adapters.CategoryAdapter;
-import com.app24.www.wbwp.model.Categorymodel;
+import com.app24.www.wbwp.model.CategoryItem;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,9 +28,7 @@ public class CategoryFragment extends Fragment {
     private DatabaseReference dbRef;
     private CategoryAdapter mAdapter;
     private RecyclerView categoryList;
-    private List<Categorymodel> listCategoryAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-
+    private List<CategoryItem> listOfCategory;
 
     public CategoryFragment() {
         // Required empty public constructor
@@ -43,23 +41,29 @@ public class CategoryFragment extends Fragment {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_category, container, false);
         categoryList = view.findViewById(R.id.recyclerView);
-        listCategoryAdapter=new ArrayList<>();
-        layoutManager =new LinearLayoutManager(getContext());
-        categoryList.setLayoutManager(layoutManager);
+        listOfCategory=new ArrayList<>();
+        categoryList.setLayoutManager(new GridLayoutManager(getContext(),2));
         categoryList.setItemAnimator(new DefaultItemAnimator());
-        mAdapter=new CategoryAdapter(getContext(),listCategoryAdapter);
+        mAdapter=new CategoryAdapter(getContext(),listOfCategory);
         categoryList.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
-
         getCategory();
-
         return  view;
     }
 
     private void getCategory() {
-    Categorymodel categorymodel=new Categorymodel();
-
-        listCategoryAdapter.add(categorymodel);
+        listOfCategory.add(new CategoryItem("Nature",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Cartoon",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Abstract",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Classic",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Colorful",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Animals",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Fashion",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Love",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Games",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Dark",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Celebrity",R.drawable.ic_notifications_black_24dp));
+        listOfCategory.add(new CategoryItem("Sports",R.drawable.ic_notifications_black_24dp));
     }
 
 }
