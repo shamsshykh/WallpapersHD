@@ -9,9 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.app24.www.wbwp.R;
 import com.app24.www.wbwp.adapters.CategoryAdapter;
+import com.app24.www.wbwp.interfaces.ItemClickListnear;
 import com.app24.www.wbwp.model.CategoryItem;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -44,13 +46,17 @@ public class CategoryFragment extends Fragment {
         listOfCategory=new ArrayList<>();
         categoryList.setLayoutManager(new GridLayoutManager(getContext(),2));
         categoryList.setItemAnimator(new DefaultItemAnimator());
-        mAdapter=new CategoryAdapter(getContext(),listOfCategory);
+        mAdapter=new CategoryAdapter(getContext(), listOfCategory, new ItemClickListnear() {
+            @Override
+            public void onItemClick(View view, int pos) {
+
+            }
+        });
         categoryList.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
         getCategory();
         return  view;
     }
-
     private void getCategory() {
         listOfCategory.add(new CategoryItem("Nature",R.drawable.ic_notifications_black_24dp));
         listOfCategory.add(new CategoryItem("Cartoon",R.drawable.ic_notifications_black_24dp));
